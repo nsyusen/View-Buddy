@@ -5,4 +5,5 @@ The application runs on both iOS and android, and it can also be ported to web.
 
 * The iOS module contains necessary information to run the application on iOS devices
 * The android module contains necessary information to run the application on android devices
+* The source code can be found in the lib directory
 
