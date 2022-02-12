@@ -6,7 +6,7 @@ import 'Bodies/movie_page_body.dart';
 
 class MoviePageScreen extends StatelessWidget {
 
-  final CachedNetworkImage image;
+  final CachedNetworkImage image; // Cached movie poster
   final Movie movie;
 
   const MoviePageScreen({

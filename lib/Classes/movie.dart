@@ -1,3 +1,4 @@
+// Keeps information regarding movies and their poster images
 class Movie {
   final String _title;
   final String _imageURL;

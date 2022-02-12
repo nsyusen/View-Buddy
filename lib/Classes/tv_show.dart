@@ -1,3 +1,4 @@
+// Keeps information regarding TV Shows and their poster images
 class TVShow {
   final String _title;
   final String _imageURL;

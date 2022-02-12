@@ -3,10 +3,12 @@ import 'package:http/http.dart' as http;
 import 'package:view_buddy/Classes/cast_member.dart';
 import 'package:view_buddy/Classes/tv_show.dart';
 
+// An interface to perform TV Show queries on TMDb
 class TVService {
 
   final String _tmdbAPI = "3b05de31c5bf2d6e9222e656c2d4b3bc";
 
+  // Retrieves popular TV Shows from TMDb
   Future<List<TVShow>> fetchPopularTVShows() async {
     List<TVShow> finalTVShows = [];
     final response = await http.get(Uri.parse("https://api.themoviedb.org/3/tv/popular?api_key=${_tmdbAPI}&language=en-US"));
@@ -22,7 +24,8 @@ class TVService {
     }
   }
 
-  Future<List<CastMember>> getMovieCast(int id) async {
+  // Retrieves cast members for a TV Show with specified TMDB id
+  Future<List<CastMember>> getTVCast(int id) async {
     List<CastMember> members = [];
     final response = await http.get(Uri.parse("https://api.themoviedb.org/3/tv/$id/credits?api_key=${_tmdbAPI}&language=en-US"));
     if (response.statusCode == 200) {

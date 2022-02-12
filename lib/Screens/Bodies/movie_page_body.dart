@@ -28,7 +28,7 @@ class _MoviePageBodyState extends State<MoviePageBody> {
   double _currentOpacity = 0.0;
   final _controller = ScrollController();
 
-  late Future<List<CastMember>> movieFuture;
+  late Future<List<CastMember>> movieFuture; // To hold movie cast
 
   MovieService get movieService => GetIt.I<MovieService>();
 
@@ -36,6 +36,8 @@ class _MoviePageBodyState extends State<MoviePageBody> {
   void initState() {
     super.initState();
     movieFuture = movieService.getMovieCast(widget.movie.id);
+
+    // Fade in graphics
     Future.delayed(const Duration(milliseconds: 250), () {
       setState(() {
         _currentOpacity = 1;
@@ -164,6 +166,7 @@ class _MoviePageBodyState extends State<MoviePageBody> {
     );
   }
 
+  // Defines how to display each cast member in the list of movie cast members
   Widget _castBuilder(BuildContext context, int index, AsyncSnapshot<List<dynamic>> snapshot) {
     CastMember castMember = snapshot.data![index];
     CachedNetworkImage image = CachedNetworkImage(

@@ -5,6 +5,7 @@ import 'package:view_buddy/services/tv_service.dart';
 
 import 'Screens/home_page_screen.dart';
 
+// Set up services
 void setupLocator() {
   GetIt.I.registerLazySingleton(() => MovieService());
   GetIt.I.registerLazySingleton(() => TVService());

@@ -4,10 +4,12 @@ import 'package:http/http.dart' as http;
 import 'package:view_buddy/Classes/cast_member.dart';
 import 'package:view_buddy/Classes/movie.dart';
 
+// An interface to perform movie queries on TMDb
 class MovieService {
 
   final String _tmdbAPI = "3b05de31c5bf2d6e9222e656c2d4b3bc";
 
+  // Retrieves popular movies from TMDb
   Future<List<Movie>> fetchPopularMovies() async {
     List<Movie> finalMovies = [];
     final response = await http.get(Uri.parse("https://api.themoviedb.org/3/movie/popular?api_key=${_tmdbAPI}&language=en-US"));
@@ -23,6 +25,7 @@ class MovieService {
     }
   }
 
+  // Retrieves cast members for a movie with a specified TMDb id
   Future<List<CastMember>> getMovieCast(int id) async {
     List<CastMember> members = [];
     final response = await http.get(Uri.parse("https://api.themoviedb.org/3/movie/$id/credits?api_key=${_tmdbAPI}&language=en-US"));

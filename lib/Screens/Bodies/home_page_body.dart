@@ -16,6 +16,7 @@ class HomePageBody extends StatefulWidget {
 
 class _HomePageBodyState extends State<HomePageBody> with AutomaticKeepAliveClientMixin<HomePageBody>{
 
+  // Will hold lists of popular movies/tv shows
   late Future<List<Movie>> movie_future;
   late Future<List<TVShow>> tv_future;
 
@@ -25,6 +26,8 @@ class _HomePageBodyState extends State<HomePageBody> with AutomaticKeepAliveClie
   @override
   void initState() {
     super.initState();
+
+    // Retrieve popular movies/tv shows
     movie_future = movieService.fetchPopularMovies();
     tv_future = tvService.fetchPopularTVShows();
   }
@@ -107,7 +110,6 @@ class _HomePageBodyState extends State<HomePageBody> with AutomaticKeepAliveClie
                       return ListView.builder(
                           scrollDirection: Axis.horizontal,
                           itemCount: snapshot.data!.length,
-                          cacheExtent: 9999,
                           addAutomaticKeepAlives: true,
                           itemBuilder: (context, index) => _tvListBuilder(context, index, snapshot)
                       );
@@ -123,6 +125,7 @@ class _HomePageBodyState extends State<HomePageBody> with AutomaticKeepAliveClie
     );
   }
 
+  // Defines how to display each movie in the fetched list and the corresponding gesture events
   Widget _movieListBuilder(BuildContext context, int index, AsyncSnapshot<List<dynamic>> snapshot) {
     Size screenSize = MediaQuery.of(context).size;
     Movie movie = snapshot.data![index];
@@ -158,6 +161,7 @@ class _HomePageBodyState extends State<HomePageBody> with AutomaticKeepAliveClie
     );
   }
 
+  // Defines how to display each tv show in the fetched list and the corresponding gesture events
   Widget _tvListBuilder(BuildContext context, int index, AsyncSnapshot<List<dynamic>> snapshot) {
     Size screenSize = MediaQuery.of(context).size;
     TVShow tvShow = snapshot.data![index];

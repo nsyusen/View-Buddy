@@ -28,14 +28,16 @@ class _MoviePageBodyState extends State<TVShowPageBody> {
   double _currentOpacity = 0.0;
   final _controller = ScrollController();
 
-  late Future<List<CastMember>> tvFuture;
+  late Future<List<CastMember>> tvFuture; // Will hold list of cast members
 
   TVService get tvService => GetIt.I<TVService>();
 
   @override
   void initState() {
     super.initState();
-    tvFuture = tvService.getMovieCast(widget.tvShow.id);
+    tvFuture = tvService.getTVCast(widget.tvShow.id);
+
+    // Fade in graphics
     Future.delayed(const Duration(milliseconds: 250), () {
       setState(() {
         _currentOpacity = 1;
@@ -164,6 +166,7 @@ class _MoviePageBodyState extends State<TVShowPageBody> {
     );
   }
 
+  // Defines how to display each cast member in the list of TV Show cast members
   Widget _castBuilder(BuildContext context, int index, AsyncSnapshot<List<dynamic>> snapshot) {
     CastMember castMember = snapshot.data![index];
     CachedNetworkImage image = CachedNetworkImage(

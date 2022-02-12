@@ -1,3 +1,4 @@
+// Keeps information pertaining to an actor
 class CastMember {
   final String _name;
   final String _character;

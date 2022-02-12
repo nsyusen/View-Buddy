@@ -7,7 +7,7 @@ import 'Bodies/tvshow_page_body.dart';
 
 class TVShowPageScreen extends StatelessWidget {
 
-  final CachedNetworkImage image;
+  final CachedNetworkImage image; // Cached TV Show poster
   final TVShow tvShow;
 
   const TVShowPageScreen({
